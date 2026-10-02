@@ -2,6 +2,8 @@
 const D=window.DATA,P=D.profile,M=document.querySelector('#main');
 const e=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const R=id=>D.research.find(r=>r.id===id);
+const RM=D.rm||{};const mg=(a,b)=>{const k=new Set((a||[]).map(x=>String(x.title||x.text).toLowerCase()));return (a||[]).concat((b||[]).filter(x=>!k.has(String(x.title||x.text).toLowerCase())))};
+const AW=()=>mg(D.awards,RM.awards),FU=()=>mg(D.funding,RM.funding),AC=()=>mg(D.activities,RM.activities),CA=()=>mg(P.career,RM.career),ED=()=>mg(P.education,RM.education);
 const chips=a=>(a||[]).filter(R).map(i=>`<a class="chip" href="#/research/${i}">${e(R(i).title)}</a>`).join('');
 const img=i=>i&&i.src?`<img src="${e(i.src)}" alt="${e(i.alt||'')}" loading="lazy">`:'';
 const ja=t=>t?`<details><summary>Japanese summary / 日本語</summary><p lang="ja">${e(t)}</p></details>`:'';
@@ -32,14 +34,14 @@ const pages={
   <div class="vision"><b>Long-term Research Vision</b><br>${e(P.vision)} <a href="#/research">Details →</a>${ja(P.visionJa)}</div>
   ${sec('Research',`<div class="cards">${D.research.map(rcard).join('')}</div>`)}
   ${sec('Selected Publications',ul(pubs().filter(p=>p.selected),pub))}
-  ${sec('Awards &amp; Fellowships',ul((D.awards||[]).slice(0,3),award)+'<a href="#/awards">All →</a>')}
+  ${sec('Awards &amp; Fellowships',ul(AW().slice(0,3),award)+'<a href="#/awards">All →</a>')}
   ${sec('Recent News',`<ul class="list news">${(D.news||[]).slice(0,3).map(newsItem).join('')}</ul><a href="#/news">All →</a>`)}`}),
  about:()=>({t:'About',h:`<h1>About</h1><p><b>${e(P.name)}</b> (${e(P.nameJa)}), ${e(P.degree)}<br>${e(P.position)}, ${e(P.affiliation)}</p>
   ${sec('Research interests',P.interests.map(i=>`<span class="tag">${e(i)}</span>`).join(''))}
   ${sec('Background',`<p>${e(P.story)}</p>${ja(P.storyJa)}`)}
   ${sec('Timeline',`<ol class="tl">${P.timeline.map(t=>`<li><b>${e(t.title)}</b> <span class="date">${e(t.year)}</span><div class="sub">${e(t.text)}</div></li>`).join('')}</ol>`)}
-  ${sec('Career',ul(P.career,c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
-  ${sec('Education',ul(P.education,c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
+  ${sec('Career',ul(CA(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
+  ${sec('Education',ul(ED(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
   ${sec('External profiles',ul(P.links,l=>`<li class="item"><a href="${e(l.url)}" rel="me noopener">${e(l.label)}</a></li>`))}`}),
  research:id=>{
   if(!id)return{t:'Research',h:`<h1>Research</h1>${D.research.map(r=>`<div class="cards" style="margin-bottom:14px">${rcard(r)}</div>`).join('')}${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${vision()}`)}`};
@@ -53,11 +55,11 @@ const pages={
   ${sec('Related Awards',ul(rel('awards',id),award))}
   ${sec('Related Activities',ul(rel('activities',id),act))}`};},
  publications:()=>({t:'Publications',h:`<h1>Publications</h1><p class="sub">Full list: <a href="https://researchmap.jp/${e(P.researchmapId)}">Researchmap</a></p>${pubList(pubs())}`}),
- awards:()=>({t:'Awards',h:`<h1>Awards &amp; Fellowships</h1>${ul((D.awards||[]).slice().sort((a,b)=>b.year-a.year),award)}`}),
- funding:()=>({t:'Funding',h:`<h1>Funding</h1>${ul((D.funding||[]).slice().sort((a,b)=>b.year-a.year),fund)}`}),
- activities:()=>({t:'Activities',h:`<h1>Academic &amp; Science Activities</h1>${D.activityCategories.map(c=>sec(c,ul((D.activities||[]).filter(a=>a.category===c),act))).join('')}`}),
+ awards:()=>({t:'Awards',h:`<h1>Awards &amp; Fellowships</h1>${ul(AW().slice().sort((a,b)=>b.year-a.year),award)}`}),
+ funding:()=>({t:'Funding',h:`<h1>Funding</h1>${ul(FU().slice().sort((a,b)=>b.year-a.year),fund)}`}),
+ activities:()=>({t:'Activities',h:`<h1>Academic &amp; Science Activities</h1>${D.activityCategories.concat(AC().some(a=>a.category==='Other')?['Other']:[]).map(c=>sec(c,ul(AC().filter(a=>a.category===c),act))).join('')}`}),
  news:()=>({t:'News',h:`<h1>News</h1><ul class="list news">${(D.news||[]).map(newsItem).join('')}</ul>`}),
- cv:()=>({t:'CV',h:`<h1>CV</h1><p><a href="${e(P.cvPdf)}">Download full CV (PDF)</a></p>${sec('Career',ul(P.career,c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}${sec('Education',ul(P.education,c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}${sec('Awards',ul(D.awards,award))}${sec('Funding',ul(D.funding,fund))}`})
+ cv:()=>({t:'CV',h:`<h1>CV</h1><p><a href="${e(P.cvPdf)}">Download full CV (PDF)</a></p>${sec('Career',ul(CA(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}${sec('Education',ul(ED(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}${sec('Awards',ul(AW(),award))}${sec('Funding',ul(FU(),fund))}`})
 };
 function route(){const[,p='',id]=location.hash.replace(/^#/,'').split('/');const f=pages[p]||pages[''];const o=f(id);
  M.innerHTML=o.h;document.title=(o.t?o.t+' | ':'')+'Sakura Moriyama, Ph.D. | Kyoto University';
