@@ -18,9 +18,9 @@ DATA.profile = {
   education: [{ period: "20XX", text: "Ph.D., (field), (university)" }],
   links: [
     { label: "Researchmap", url: "https://researchmap.jp/sakuramoriyama" },
-    { label: "ORCID", url: "https://orcid.org/0000-0000-0000-0000" },
+    { label: "ORCID", url: "https://orcid.org/0009-0005-9806-9835" },
     { label: "Google Scholar", url: "https://scholar.google.com/" },
-    { label: "LinkedIn", url: "https://www.linkedin.com/" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/sakura-moriyama-884203253/" },
     { label: "X", url: "https://x.com/" }
   ],
   // Timeline: how each stage connects to the next
