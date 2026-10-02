@@ -17,7 +17,7 @@ DATA.profile = {
   ],
   education: [{ period: "20XX", text: "Ph.D., (field), (university)" }],
   links: [
-    { label: "Researchmap", url: "https://researchmap.jp/YOUR_PERMALINK" },
+    { label: "Researchmap", url: "https://researchmap.jp/sakuramoriyama" },
     { label: "ORCID", url: "https://orcid.org/0000-0000-0000-0000" },
     { label: "Google Scholar", url: "https://scholar.google.com/" },
     { label: "LinkedIn", url: "https://www.linkedin.com/" },
@@ -32,5 +32,5 @@ DATA.profile = {
     { year: "", title: "Long-term vision", text: "Evidence-based applications of aroma (future direction)." }
   ],
   cvPdf: "assets/cv/cv.pdf",
-  researchmapId: "YOUR_PERMALINK"
+  researchmapId: "sakuramoriyama"
 };
