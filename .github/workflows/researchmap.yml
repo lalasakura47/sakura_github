@@ -1,0 +1,21 @@
+name: Sync Researchmap
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1"
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/fetch_researchmap.mjs sakuramoriyama
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/researchmap.js
+          git diff --cached --quiet || git commit -m "Sync Researchmap"
+          git push
