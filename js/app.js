@@ -16,6 +16,7 @@ const pub=p=>`<li class="item">${au(p.authors)}. ${e(p.title)}. <i>${e(p.journal
  ${p.first?'<span class="tag">First author</span>':''}<div>${chips(p.relatedResearch)}</div></li>`;
 const pubList=l=>{const y={};l.forEach(p=>(y[p.year]=y[p.year]||[]).push(p));
  return Object.keys(y).sort((a,b)=>b-a).map(k=>`<h3>${k}</h3><ul class="list">${y[k].map(pub).join('')}</ul>`).join('')||'<p class="sub">No entries yet.</p>';};
+const presList=l=>{const y={};(l||[]).forEach(p=>(y[p.year]=y[p.year]||[]).push(p));return Object.keys(y).sort((a,b)=>b-a).map(k=>`<h3>${e(k||'—')}</h3><ul class="list">${y[k].map(p=>`<li class="item">${au(p.authors)}. ${e(p.title)}. ${e(p.event)} ${p.invited?'<span class="tag">Invited</span>':''}</li>`).join('')}</ul>`).join('');};
 const award=a=>`<li class="item"><span class="date">${e(a.year)}</span><b>${e(a.title)}</b> <span class="tag">${e(a.category||'')}</span><div class="sub">${e(a.org)}</div><div>${e(a.desc)}</div>${chips(a.relatedResearch)}</li>`;
 const fund=f=>`<li class="item"><span class="date">${e(f.period||f.year)}</span><b>${e(f.title)}</b><div class="sub">${e(f.program)}${f.role?' · '+e(f.role):''}</div><div>${e(f.desc)}</div>${chips(f.relatedResearch)}</li>`;
 const act=a=>`<li class="item"><span class="date">${e(a.date)}</span><b>${e(a.title)}</b><div class="sub">${e(a.org)}${a.role?' · '+e(a.role):''}</div><div>${e(a.desc)}</div>${chips(a.relatedResearch)}${img(a.photo)}</li>`;
@@ -25,7 +26,7 @@ const sec=(t,h)=>h?`<h2>${t}</h2>${h}`:'';
 const ul=(a,f)=>a&&a.length?`<ul class="list">${a.map(f).join('')}</ul>`:'';
 const rcard=r=>`<a class="card" href="#/research/${r.id}"><span class="tag ${r.status==='current'?'cur':''}">${r.status==='previous'?'Previous research':r.status==='current'?'Current':e(r.status)}</span><h3>${e(r.no)} ${e(r.title)}</h3><p class="sub">${e(r.summary)}</p></a>`;
 const vision=()=>{const v=D.vision;return `<div class="vision"><b>Current research</b><ul>${v.current.map(x=>`<li>${e(x)}</li>`).join('')}</ul><b>Long-term vision (future direction)</b><ul>${v.future.map(x=>`<li>${e(x)}</li>`).join('')}</ul><small class="sub">${e(v.note)}</small></div>`;};
-const nav=[['','Home'],['about','About'],['research','Research'],['publications','Publications'],['awards','Awards'],['funding','Funding'],['activities','Activities'],['news','News'],['cv','CV']];
+const nav=[['','Home'],['about','About'],['research','Research'],['publications','Publications'],['presentations','Presentations'],['awards','Awards'],['funding','Funding'],['activities','Activities'],['news','News'],['cv','CV']];
 document.querySelector('#nav').innerHTML=nav.map(([h,t])=>`<a href="#/${h}" data-h="${h}">${t}</a>`).join('');
 document.querySelector('#yr').textContent=new Date().getFullYear();
 const pages={
@@ -55,6 +56,7 @@ const pages={
   ${sec('Related Awards',ul(rel('awards',id),award))}
   ${sec('Related Activities',ul(rel('activities',id),act))}`};},
  publications:()=>({t:'Publications',h:`<h1>Publications</h1><p class="sub">Full list: <a href="https://researchmap.jp/${e(P.researchmapId)}">Researchmap</a></p>${pubList(pubs())}`}),
+ presentations:()=>({t:'Presentations',h:`<h1>Conference Presentations</h1><p class="sub">Imported from <a href="https://researchmap.jp/${e(P.researchmapId)}">Researchmap</a></p>${presList(RM.presentations)||'<p class="sub">No entries yet.</p>'}`}),
  awards:()=>({t:'Awards',h:`<h1>Awards &amp; Fellowships</h1>${ul(AW().slice().sort((a,b)=>b.year-a.year),award)}`}),
  funding:()=>({t:'Funding',h:`<h1>Funding</h1>${ul(FU().slice().sort((a,b)=>b.year-a.year),fund)}`}),
  activities:()=>({t:'Activities',h:`<h1>Academic &amp; Science Activities</h1>${D.activityCategories.concat(AC().some(a=>a.category==='Other')?['Other']:[]).map(c=>sec(c,ul(AC().filter(a=>a.category===c),act))).join('')}`}),
