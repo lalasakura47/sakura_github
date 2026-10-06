@@ -1,3 +1,3 @@
 DATA.funding = [
- { id: "", year: , program: "", title: "", role: "", period: "", desc: "", relatedResearch: [""] }
+ { id: "", year: "", program: "", title: "", role: "", period: "", desc: "", relatedResearch: [""] }
 ];
