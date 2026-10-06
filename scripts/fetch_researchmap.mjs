@@ -35,11 +35,29 @@ const rm = {
   funding: await run('research_projects', a => ({ year: yr(a.from_date), period: span(a), title: g(a.research_project_title), program: g(a.offer_organization) || g(a.system_name), role: typeof a.category === 'string' ? a.category.replace(/_/g, ' ') : '', desc: '', relatedResearch: [] })),
   career: await run('research_experience', a => ({ period: span(a), text: [g(a.job), g(a.affiliation)].filter(Boolean).join(', ') })),
   education: await run('education', a => ({ period: span(a), text: [g(a.institution), g(a.department), g(a.degree)].filter(Boolean).join(', ') })),
+  presentations: await run('presentations', a => ({ year: yr(first(a, 'publication_date', 'from_date')), authors: (a.presenters?.en || a.presenters?.ja || []).map(x => x.name), title: g(a.presentation_title), event: g(a.event), invited: !!a.invited, relatedResearch: [] })),
   activities: [
     ...await run('social_contribution', a => ({ date: yr(a.from_date), title: g(a.social_contribution_title), org: g(a.organization) || g(a.event), role: g(a.role), desc: '', category: 'Other', relatedResearch: [] })),
     ...await run('committee_memberships', a => ({ date: span(a), title: g(a.committee_name), org: g(a.association), role: g(a.role), desc: '', category: 'Other', relatedResearch: [] }))
   ]
 };
+// ---- Auto categories / theme links: keyword guesses. Edit the patterns below as you like. ----
+const THEMES = [
+  ['gpcr-trp', /(gpcr|g[- ]?protein).*trp|trp.*(gpcr|g[- ]?protein)|crosstalk|クロストーク/i],
+  ['trp-thermal', /trp.*(thermal|temperature|heat|cold|温度|熱)|(thermal|temperature|温度|熱).*trp|thermosens|温度感受/i],
+  ['or-sensor', /olfactory|odorant|odor receptor|嗅覚|におい|匂い|cell[- ]array|セルアレイ/i]];
+const AWARD_CAT = [['Poster Award', /poster|ポスター/i], ['Fellowship', /fellow|特別研究員|フェロー/i], ['International selection', /lindau|selected|選出|派遣/i]];
+const ACT_CAT = [
+  ['Innovation / Entrepreneurship', /startup|pitch|entrepreneur|起業|ピッチ|アントレ|事業化|plug and play/i],
+  ['Science Communication', /science caf|café|cafe|public lecture|outreach|講演|サイエンスカフェ|出前|アウトリーチ|高校|中学|小学|市民/i],
+  ['Researcher Development', /研修|training|program|プログラム|JST|PM/i],
+  ['Conference & Forum Organization', /organi[sz]|organizer|chair|moderator|symposium|forum|シンポジウム|フォーラム|座長|運営|企画/i]];
+const T = x => [x.title, x.text, x.event, x.org, x.program].filter(Boolean).join(' ');
+const tag = x => THEMES.filter(([, re]) => re.test(T(x))).map(([i]) => i);
+const pick = (rules, t, d) => (rules.find(([, re]) => re.test(t)) || [d])[0];
+rm.awards.forEach(a => { a.category = pick(AWARD_CAT, T(a), 'Award'); a.relatedResearch = tag(a); });
+rm.activities.forEach(a => { a.category = pick(ACT_CAT, T(a), 'Other'); a.relatedResearch = tag(a); });
+[...rm.funding, ...rm.presentations, ...papers].forEach(x => { x.relatedResearch = tag(x); });
 for (const k in rm) rm[k] = rm[k].filter(x => x.title || x.text);
 writeFileSync('data/researchmap.js', 'DATA.researchmap = ' + JSON.stringify(papers, null, 1) + ';\nDATA.rm = ' + JSON.stringify(rm, null, 1) + ';\n');
 console.log('written:', papers.length, 'papers;', Object.entries(rm).map(([k, v]) => k + ' ' + v.length).join(', '));

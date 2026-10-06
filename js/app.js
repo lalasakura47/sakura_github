@@ -7,7 +7,7 @@ const AW=()=>mg(D.awards,RM.awards),FU=()=>mg(D.funding,RM.funding),AC=()=>mg(D.
 const chips=a=>(a||[]).filter(R).map(i=>`<a class="chip" href="#/research/${i}">${e(R(i).title)}</a>`).join('');
 const img=i=>i&&i.src?`<img src="${e(i.src)}" alt="${e(i.alt||'')}" loading="lazy">`:'';
 const ja=t=>t?`<details><summary>Japanese summary / 日本語</summary><p lang="ja">${e(t)}</p></details>`:'';
-const rel=(k,id)=>(D[k]||[]).filter(x=>(x.relatedResearch||[]).includes(id));
+const rel=(k,id)=>({publications:pubs,funding:FU,awards:AW,activities:AC}[k]()||[]).filter(x=>(x.relatedResearch||[]).includes(id));
 const pubs=()=>{const m=D.publications||[],d=new Set(m.map(p=>(p.doi||'').toLowerCase()).filter(Boolean));
  return m.concat((D.researchmap||[]).filter(p=>!p.doi||!d.has(p.doi.toLowerCase())));};
 const au=a=>(a||[]).map(n=>n.includes(P.me)?`<b>${e(n)}</b>`:e(n)).join(', ');
@@ -32,7 +32,7 @@ document.querySelector('#yr').textContent=new Date().getFullYear();
 const pages={
  '':()=>({t:'',h:`<div class="hero">${img(P.photo)}<div><h1>${e(P.name)}, ${e(P.degree)}</h1><p class="lead">${e(P.position)}<br>${e(P.affiliation)}</p></div></div>
   <p class="lead">${e(P.intro)}</p>${ja(P.introJa)}
-  <div class="vision"><b>Long-term Research Vision</b><br>${e(P.vision)} <a href="#/research">Details →</a>${ja(P.visionJa)}</div>
+  <div class="vision"><b>Long-term Research Vision</b><br>${e(P.vision)} <a href="#/research">Details →</a>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${ja(P.visionJa)}</div>
   ${sec('Research',`<div class="cards">${D.research.map(rcard).join('')}</div>`)}
   ${sec('Selected Publications',ul(pubs().filter(p=>p.selected),pub))}
   ${sec('Awards &amp; Fellowships',ul(AW().slice(0,3),award)+'<a href="#/awards">All →</a>')}
@@ -45,13 +45,13 @@ const pages={
   ${sec('Education',ul(ED(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
   ${sec('External profiles',ul(P.links,l=>`<li class="item"><a href="${e(l.url)}" rel="me noopener">${e(l.label)}</a></li>`))}`}),
  research:id=>{
-  if(!id)return{t:'Research',h:`<h1>Research</h1>${D.research.map(r=>`<div class="cards" style="margin-bottom:14px">${rcard(r)}</div>`).join('')}${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${vision()}`)}`};
+  if(!id)return{t:'Research',h:`<h1>Research</h1>${D.research.map(r=>`<div class="cards" style="margin-bottom:14px">${rcard(r)}</div>`).join('')}${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${vision()}`)}`};
   const r=R(id);if(!r)return{t:'Not found',h:'<p>Not found.</p>'};
   const S=[['Overview',r.overview],['Background',r.background],['Research Question',r.question],['Approach',r.approach],['Key Findings',r.findings],['Current Direction',r.direction]];
   return{t:r.title,h:`<p><a href="#/research">← Research</a></p><span class="tag ${r.status==='current'?'cur':''}">${r.status==='previous'?'Previous research':e(r.status)}</span><h1>${e(r.no)} ${e(r.title)}</h1>
   <p>${(r.keywords||[]).map(k=>`<span class="tag">${e(k)}</span>`).join('')}</p>${ja(r.ja)}
   ${S.map(([t,v])=>sec(t,v?`<p>${e(v)}</p>`:'')).join('')}
-  ${sec('Related Publications',ul(rel('publications',id).concat((D.researchmap||[]).filter(p=>(p.relatedResearch||[]).includes(id))),pub))}
+  ${sec('Related Publications',ul(rel('publications',id),pub))}
   ${sec('Related Funding',ul(rel('funding',id),fund))}
   ${sec('Related Awards',ul(rel('awards',id),award))}
   ${sec('Related Activities',ul(rel('activities',id),act))}`};},
