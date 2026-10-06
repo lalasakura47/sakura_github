@@ -5,7 +5,8 @@ DATA.profile = {
   photo: { src: "assets/images/profile.jpg", alt: "Portrait of Sakura Moriyama" },
   intro: "I investigate how sensory receptors translate chemical and thermal stimuli into cellular responses, with a focus on GPCRs and TRP channels. My research spans receptor signaling, channel structural dynamics, and the mechanisms of odorant action.",
   introJa: "感覚化学受容体（嗅覚受容体やTRPチャネル）を中心に研究しています。受容体シグナリングや構造動態の解析を通じて、匂い成分をはじめとする各種リガンドの作用機序の解明に取り組んでいます。",
-  vision: "From understanding sensory mechanisms to developing evidence-based applications of aroma.”During my clinical work in the NICU and emergency department, I witnessed the practical benefits of medical aromatherapy for patient relief, yet felt a strong need to uncover its underlying mechanisms. My goal is to bridge this gap: to elucidate the molecular mechanisms of odorants and translate these basic scientific insights into evidence-based aroma applications for healthcare.”",
+　vision: "From understanding sensory mechanisms to developing evidence-based applications of aroma.",
+  visionText: "During my clinical work in the NICU and emergency department, I observed patients who appeared to find relief with aromatherapy for patient relief, yet felt a strong need to uncover its underlying mechanisms. My goal is to bridge this gap: to elucidate the molecular mechanisms of odorants and translate these basic scientific insights into evidence-based aroma applications for healthcare.",
   visionJa: "研究ビジョン：NICUや救急病棟での看護師としての勤務時代、メディカルアロマが患者の苦痛緩和に与える可能性を実感する一方で、その作用機序が十分に解明されていないことに強い問題意識を抱きました。私の目指す研究は、臨床と基礎の架け橋となることです。匂い成分の分子メカニズムを解明し、得られた科学的知見を医療現場で使えるエビデンスに基づくアロマ応用へと還元することを目指しています。",
   interests: ["Chemical sensing", "Thermal sensing", "GPCR signaling", "TRP channels", "Olfactory receptors", "MD simulation", "Aroma-related sensory mechanisms"],
   // Background & Research Journey: short, connected to current research (edit freely)
