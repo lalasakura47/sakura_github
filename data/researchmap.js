@@ -12,7 +12,9 @@ DATA.researchmap = [
   "pages": "1302-1311",
   "doi": "10.1093/bbb/zbaf093",
   "pmid": "",
-  "relatedResearch": []
+  "relatedResearch": [
+   "or-sensor"
+  ]
  },
  {
   "year": 2024,
@@ -44,7 +46,9 @@ DATA.researchmap = [
   "pages": "908-917",
   "doi": "10.1093/bbb/zbae060",
   "pmid": "38734894",
-  "relatedResearch": []
+  "relatedResearch": [
+   "or-sensor"
+  ]
  }
 ];
 DATA.rm = {
@@ -54,7 +58,7 @@ DATA.rm = {
    "title": "The 75th Lindau Nobel Laureate Meeting",
    "org": "",
    "desc": "",
-   "category": "Award",
+   "category": "International selection",
    "relatedResearch": []
   },
   {
@@ -78,7 +82,7 @@ DATA.rm = {
    "title": "Poster award",
    "org": "Young Researchers’ Group of Japanese Association for the Study of Taste and Smell",
    "desc": "",
-   "category": "Award",
+   "category": "Poster Award",
    "relatedResearch": []
   },
   {
@@ -86,7 +90,7 @@ DATA.rm = {
    "title": "BEST POSTER AWARD",
    "org": "The 28th SANKEN International Symposium",
    "desc": "",
-   "category": "Award",
+   "category": "Poster Award",
    "relatedResearch": []
   },
   {
@@ -94,7 +98,7 @@ DATA.rm = {
    "title": "BEST POSTER AWARD",
    "org": "The 27th SANKEN International Symposium",
    "desc": "",
-   "category": "Award",
+   "category": "Poster Award",
    "relatedResearch": []
   }
  ],
@@ -106,7 +110,9 @@ DATA.rm = {
    "program": "日本学術振興会",
    "role": "",
    "desc": "",
-   "relatedResearch": []
+   "relatedResearch": [
+    "or-sensor"
+   ]
   },
   {
    "year": "2026",
@@ -133,7 +139,9 @@ DATA.rm = {
    "program": "Japan Science and Technology Agency (JST)",
    "role": "",
    "desc": "",
-   "relatedResearch": []
+   "relatedResearch": [
+    "or-sensor"
+   ]
   },
   {
    "year": "2024",
@@ -142,7 +150,9 @@ DATA.rm = {
    "program": "大阪大学産業科学研究所",
    "role": "",
    "desc": "",
-   "relatedResearch": []
+   "relatedResearch": [
+    "or-sensor"
+   ]
   }
  ],
  "career": [
@@ -183,6 +193,360 @@ DATA.rm = {
   {
    "period": "2021–2025",
    "text": "Graduate School of Frontier Biosciences"
+  }
+ ],
+ "presentations": [
+  {
+   "year": "2026",
+   "authors": [
+    "Sakura Moriyama",
+    "Shun'ichi Kuroda"
+   ],
+   "title": "Functional Interaction Between Olfactory Receptors and TRPV1 Studied inHEK293T Cells",
+   "event": "ECRO XXXVI, Annual Meeting 2026",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2026",
+   "authors": [
+    "森山さくら"
+   ],
+   "title": "匂い成分によるTransientreceptorpotential channel (TRP) の化学刺激応答を規定する分子機構の解析",
+   "event": "第5回（2026年度）JASTS若手の会リトリート",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2026",
+   "authors": [
+    "森山 さくら"
+   ],
+   "title": "嗅覚受容体とのクロストークから探る温度感受性チャネルTRPV1の機能制御機構",
+   "event": "2026年度若⼿⽀援技術講習会",
+   "invited": false,
+   "relatedResearch": [
+    "gpcr-trp",
+    "trp-thermal",
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2026",
+   "authors": [
+    "森山さくら"
+   ],
+   "title": "HEK293T細胞における嗅覚受容体(OR) と温度感受性チャネルTRPV1の機能的クロストーク",
+   "event": "第37回高遠分子細胞生物学シンポジウム",
+   "invited": false,
+   "relatedResearch": [
+    "gpcr-trp",
+    "trp-thermal",
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2026",
+   "authors": [
+    "森山さくら"
+   ],
+   "title": "化学感覚受容体を標的としたアゴニスト・アンタゴニストスクリーニング",
+   "event": "第58回若手ペプチド夏の勉強会",
+   "invited": false,
+   "relatedResearch": []
+  },
+  {
+   "year": "2026",
+   "authors": [
+    "森山さくら",
+    "日沼州司",
+    "黒田俊一"
+   ],
+   "title": "Dynamic modulation of olfactory signaling through interactions between ORs and TRPV1",
+   "event": "Japan Society for Bioscience, Biotechnology, and Agrochemistry",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2026",
+   "authors": [
+    "Sakura MORIYAMA",
+    "Shuji HINUMA",
+    "Shun‘ichi KURODA"
+   ],
+   "title": "Functional crosstalk between olfactory receptors and TRPV1 in integration of chemosensory responses",
+   "event": "The 22nd International Symposium on Molecular and Neural mechanisms of Taste and Olfactory Perception (ISMNTOP XXII)",
+   "invited": false,
+   "relatedResearch": [
+    "gpcr-trp",
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら"
+   ],
+   "title": "GPCR–TRPチャネル間クロストークの新規機構解明と創薬への展望",
+   "event": "第48回分子生物学会",
+   "invited": false,
+   "relatedResearch": [
+    "gpcr-trp"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら"
+   ],
+   "title": "フランス・グラースにおける精油生産の持続可能性に関するフィールドワーク報告",
+   "event": "第28回日本アロマセラピー学会学術総会",
+   "invited": false,
+   "relatedResearch": []
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら",
+    "日沼州司",
+    "黒田俊一"
+   ],
+   "title": "Elucidation of the crosstalk between GPCRs (olfactory receptors) and TRPV1 using HEK293T cells",
+   "event": "大阪大学医学系第16回若手研究フォーラム",
+   "invited": false,
+   "relatedResearch": [
+    "gpcr-trp",
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら",
+    "日沼州司",
+    "黒田俊一"
+   ],
+   "title": "Investigation of the Crosstalk between Olfactory Receptors and TRPV1 Channels",
+   "event": "第63回日本生物物理学会",
+   "invited": false,
+   "relatedResearch": [
+    "gpcr-trp",
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら",
+    "日沼州司",
+    "黒田俊一"
+   ],
+   "title": "Functional interaction between olfactory receptors and TRPV1 in the modulation of olfactory responses",
+   "event": "第59回日本味と匂学会",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら",
+    "日沼州司",
+    "黒田俊一"
+   ],
+   "title": "Cross-talk between olfactory receptors and TRPV1: Bridging the gap to human-like olfactory sensing",
+   "event": "第59回日本味と匂学会",
+   "invited": true,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら",
+    "日沼州司",
+    "黒田俊一"
+   ],
+   "title": "Functional interaction between olfactory receptors and TRPV1 in the modulation of olfactory responses",
+   "event": "第4回日本味と匂学会若手の会",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら"
+   ],
+   "title": "嗅覚受容体応答に基づいたアロマセラピー精油の作用機構解明への取り組み",
+   "event": "超異分野学会 大阪2025",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "森山さくら"
+   ],
+   "title": "嗅覚受容体とTRPチャネルの相互作用に基づく匂い受容機構の解明",
+   "event": "第10回Seeds-hubミニセミナー「大学院生と考える社会実装と未来の創薬研究キャリア」",
+   "invited": true,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "Sakura MORIYAMA",
+    "Shuji HINUMA",
+    "Shun'ichi KURODA"
+   ],
+   "title": "Divergent effects of Olfactory Receptor-Mediated Phosphorylation on TRPV1 activation by Vanilloid Analogs",
+   "event": "Japan Society for Bioscience, Biotechnology, and Agrochemistry (日本農芸化学2025年度大会)",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2025",
+   "authors": [
+    "Sakura MORIYAMA",
+    "Shuji HINUMA",
+    "Shun’ichi KURODA"
+   ],
+   "title": "Divergent effects of olfactory receptor-mediated phosphorylation on TRPV1 activation by vanilloid analogs",
+   "event": "The 28th SANKEN International Symposium (BEST POSTER AWARD)",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2024",
+   "authors": [
+    "Sakura MORIYAMA",
+    "shuji HINUMA",
+    "shun'ichi KURODA"
+   ],
+   "title": "Opposite Effects of Olfactory Receptors on Transient Receptor Potential Vanilloid 1 Activation by Capsaicin-Type and Eugenol-Type Ligands",
+   "event": "19th International Symposium on Olfaction and Taste",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2024",
+   "authors": [
+    "Sakura MORIYAMA",
+    "Shuji HINUMA",
+    "Shun'ichi KURODA"
+   ],
+   "title": "“Differential effects of;human olfactory receptors;forskolin on transien;receptor potential vanilloid;activation by capsaicin-type;eugenol-type ligands”",
+   "event": "Japan Society for Bioscience, Biotechnology, and Agrochemistry (日本農芸化学2024年度大会)",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "",
+   "authors": [
+    "Sakura MORIYAMA",
+    "Shuji HINUMA",
+    "Shun’ichi KURODA"
+   ],
+   "title": "Crosstalk between human olfactory receptors and transient receptor potential vanilloid 1",
+   "event": "The 27th SANKEN International Symposium (BEST POSTER AWARD)",
+   "invited": false,
+   "relatedResearch": [
+    "gpcr-trp",
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2023",
+   "authors": [
+    "Sakura Moriyama",
+    "Kenji Tatematsu",
+    "Shuji Hinuma",
+    "Shun’ichi Kuroda"
+   ],
+   "title": "Crosstalk between human olfactory receptors and TRPV1 channels",
+   "event": "第57回味と匂学会",
+   "invited": false,
+   "relatedResearch": [
+    "gpcr-trp",
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "",
+   "authors": [
+    "Sakura MORIYAMA",
+    "Kenji TATEMATSU",
+    "Shuji HINUMA",
+    "Shun’ichi KURODA"
+   ],
+   "title": "Novel interaction between TRPV1 channels and olfactory receptors",
+   "event": "The 26th SANKEN International Symposium",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2022",
+   "authors": [
+    "森山さくら",
+    "立松健司",
+    "日沼州司",
+    "黒田俊一"
+   ],
+   "title": "Studies on interaction of human olfactory receptors and TRPV1 using HEK293T cells",
+   "event": "第78回産研学術講演会",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "",
+   "authors": [
+    "森山さくら",
+    "立松健司",
+    "日沼州司",
+    "黒田俊一"
+   ],
+   "title": "Studies on interaction of human olfactory receptors and TRPV1 using HEK293T cells",
+   "event": "第56回味と匂学会",
+   "invited": false,
+   "relatedResearch": [
+    "or-sensor"
+   ]
+  },
+  {
+   "year": "2015",
+   "authors": [
+    "Sakura KURODA"
+   ],
+   "title": "Water and Health",
+   "event": "第33回日本国際保健医療学会 西日本大会",
+   "invited": false,
+   "relatedResearch": []
   }
  ],
  "activities": [
